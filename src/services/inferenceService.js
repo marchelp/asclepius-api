@@ -15,7 +15,7 @@ async function predictClassification(model, image) {
 
     const classess = ['Cancer', 'Non-cancer'];
 
-    const classResult = tf.argMax(prediction, 1).dataSync()[0];
+    const classResult = confidenceScore < 50 ? 1 : 0;
     const label = classess[classResult];
 
     let suggestion;
